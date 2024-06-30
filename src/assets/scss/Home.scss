@@ -1,0 +1,529 @@
+@font-face {
+  font-family: "SangBleu";
+  font-weight: 700;
+  src: url("../fonts/SangBleuSunrise-Bold-WebTrial.woff");
+}
+
+.mobile-view {
+  display: none;
+}
+
+.header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 14px 80px;
+  background: #fff;
+  box-shadow: 4px 8px 40px rgba(227, 230, 234, 0.3);
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      left: 50%;
+      position: absolute;
+      transform: translate(-50%, 0);
+      display: flex;
+      align-items: center;
+
+      li {
+        list-style: none;
+        margin: 0 15px;
+        position: relative;
+
+        a {
+          text-decoration: none;
+          font: {
+            family: Source Sans Pro;
+            size: 14px;
+          }
+          color: #022b54;
+          transition: 0.2s;
+
+          &:hover {
+            color: #53c3d0;
+          }
+
+          img {
+            margin-left: 12px;
+          }
+        }
+
+        &.active {
+          a {
+            color: #53c3d0;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 1px;
+            background: #53c3d0;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 8px);
+          }
+        }
+      }
+    }
+
+    & > div {
+      display: flex;
+
+      a {
+        box-sizing: border-box;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 7px 25px;
+        border: 2px solid #022b54;
+        font: {
+          family: Source Sans Pro;
+          weight: 600;
+          size: 14px;
+        }
+        color: #022b54;
+        text-decoration: none;
+        transition: 0.3s;
+
+        &:hover {
+          color: #53c3d0;
+          border: 2px solid #53c3d0;
+        }
+
+        &:focus {
+          color: #34aebc;
+          border: 2px solid #34aebc;
+        }
+
+        &:first-child {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .filter {
+    display: flex;
+
+    & > div {
+      height: 50px;
+      display: flex;
+      border: 1px solid #e8eff5;
+      box-sizing: border-box;
+      border-radius: 3px;
+      transition: 0.3s;
+
+      &:first-child {
+        width: 75%;
+        margin-right: 10px;
+
+        & > div {
+          width: 25%;
+          display: flex;
+          flex-direction: column;
+          padding: 8px 15px;
+          position: relative;
+          border: 1px solid #fff;
+
+          &::after {
+            content: "";
+            width: 1px;
+            height: 30px;
+            background: #e8eff5;
+            position: absolute;
+            right: 0;
+          }
+
+          &:hover {
+            border: 1px solid #d1eff2;
+          }
+
+          &:focus-within {
+            border: 1px solid #a3dfe6;
+          }
+
+          & > label {
+            font-family: Source Sans Pro;
+            font-size: 11px;
+            color: #53c3d0;
+          }
+
+          .datepicker {
+            position: absolute;
+            top: 50px;
+            left: 0;
+
+            & * {
+              font: {
+                family: Source Sans Pro;
+                size: 12px;
+              }
+            }
+
+            button[class^="materialui-daterange-picker-makeStyles-filled"],
+            button[class*=" materialui-daterange-picker-makeStyles-filled"] {
+              background: #53c3d0 !important;
+            }
+
+            button[class^="materialui-daterange-picker-makeStyles-outlined"],
+            button[class*=" materialui-daterange-picker-makeStyles-outlined"] {
+              border: 1px solid #53c3d0 !important;
+            }
+            & ul.materialui-daterange-picker-MuiList-root-257 {
+              width: 100px;
+            }
+          }
+
+          & > input,
+          & > select {
+            font-family: Source Sans Pro;
+            font-size: 13px;
+            color: #022b54;
+            width: 100%;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+          }
+
+          & > select {
+            cursor: pointer;
+            span {
+              font-weight: 600;
+            }
+          }
+
+          &:last-child {
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        padding: 8px 15px;
+
+        &:hover {
+          border: 1px solid #d1eff2;
+        }
+
+        &:focus-within {
+          border: 1px solid #a3dfe6;
+        }
+
+        label {
+          font-family: Source Sans Pro;
+          font-size: 11px;
+          color: #53c3d0;
+          margin-bottom: 2px;
+        }
+
+        input {
+          font-family: Source Sans Pro;
+          font-size: 13px;
+          color: #022b54;
+          width: 100%;
+          border: none;
+          outline: none;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+}
+
+.body {
+  margin-top: 128px;
+  padding: 40px 30px;
+
+  .homes {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+
+    .homes-header {
+      margin-bottom: 10px;
+
+      .title {
+        font-family: Source Sans Pro;
+        font-weight: 600;
+        font-size: 9px;
+        text-transform: uppercase;
+        color: #53c3d0;
+        position: relative;
+
+        &::after {
+          top: 50%;
+          transform: translate(7px, -50%);
+          position: absolute;
+          content: "";
+          width: 68px;
+          height: 1px;
+          background: #53c3d0;
+        }
+      }
+
+      .count {
+        font: {
+          family: Source Sans Pro;
+          weight: 300;
+          size: 28px;
+        }
+        color: #022b54;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .homes-body {
+      .loading-text {
+        display: inline-block;
+        background: #f7f7f7;
+        border-radius: 2px;
+        font-family: Source Sans Pro;
+        font-size: 16px;
+        color: #b3b3b3;
+        padding: 5px 16px;
+        margin: 60px 0;
+        margin-left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      .item {
+        display: flex;
+        padding: 20px 0;
+        border-bottom: 1px solid #f4f7fa;
+
+        &.skeleton {
+          span {
+            span {
+              border-radius: 0 !important;
+            }
+          }
+        }
+
+        .avatar {
+          transition: 0.3s;
+          width: 100%;
+          max-width: 390px;
+          flex-shrink: 0;
+
+          img {
+            width: 100%;
+            height: 208px;
+            object-fit: cover;
+          }
+        }
+
+        .details {
+          width: 100%;
+          padding: 15px 30px;
+          display: flex;
+          flex-direction: column;
+
+          .region {
+            font-family: Source Sans Pro;
+            font-size: 12px;
+            color: #53c3d0;
+            margin-bottom: 8px;
+          }
+
+          .title {
+            font: {
+              family: "SangBleu";
+              weight: 700;
+              size: 19px;
+            }
+            margin-bottom: 12px;
+            color: #022b54;
+          }
+
+          .occupancy {
+            display: flex;
+            flex-wrap: wrap;
+            opacity: 0.3;
+            padding: 0;
+            margin: 0;
+            margin-bottom: 30px;
+
+            li {
+              list-style: none;
+              display: flex;
+              align-items: center;
+              margin-right: 10px;
+
+              span {
+                font-family: Source Sans Pro;
+                font-size: 12px;
+                color: #022b54;
+              }
+            }
+          }
+
+          & > .price {
+            display: flex;
+
+            & > div {
+              width: 50%;
+
+              .label {
+                display: flex;
+                align-items: center;
+                opacity: 0.3;
+                font: {
+                  family: Source Sans Pro;
+                  size: 12px;
+                }
+                margin-bottom: 4px;
+                color: #022b54;
+
+                img {
+                  margin-right: 6px;
+                }
+              }
+
+              .price {
+                font: {
+                  family: Source Sans Pro;
+                  weight: 600;
+                  size: 20px;
+                }
+                color: #022b54;
+              }
+
+              .unit {
+                font: {
+                  family: Source Sans Pro;
+                  size: 12px;
+                }
+                color: #022b54;
+                opacity: 0.3;
+              }
+
+              .loading-price {
+                display: flex;
+                flex-direction: column;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .empty {
+    min-height: 600px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      margin-bottom: 40px;
+    }
+
+    p {
+      font-family: Source Sans Pro;
+      font-size: 16px;
+      line-height: 154%;
+      text-align: center;
+      color: #505051;
+      margin-bottom: 30px;
+    }
+
+    button {
+      border: 2px solid #53c3d0;
+      box-sizing: border-box;
+      border-radius: 3px;
+      padding: 8px 40px;
+      font-family: Source Sans Pro;
+      font-weight: 600;
+      font-size: 14px;
+      color: #53c3d0;
+      background: #fff;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        color: #1c5d9f;
+        border: 2px solid #1c5d9f;
+      }
+
+      &:focus {
+        color: #022b54;
+        border: 2px solid #022b54;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 14px 30px;
+
+    .navbar {
+      ul {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+    }
+
+    .filter {
+      .datepicker {
+        .materialui-daterange-picker-MuiGrid-root-35
+          .materialui-daterange-picker-MuiGrid-wrap-xs-nowrap-42 {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .materialui-daterange-picker-makeStyles-header-4 {
+          padding: 20px;
+        }
+
+        .materialui-daterange-picker-makeStyles-divider-6 {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .body {
+    .item {
+      .avatar {
+        max-width: 360px !important;
+      }
+
+      .details {
+        padding: 15px 25px !important;
+      }
+    }
+  }
+
+  .desktop-view {
+    display: none;
+  }
+
+  .mobile-view {
+    display: block;
+  }
+}
